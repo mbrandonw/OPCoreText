@@ -42,11 +42,14 @@ CTParagraphStyleGetValueForSpecifier(paragraphStyleRef, specifier, sizeof(dataty
     int settingIndex = 0;
     
 #define PARAGRAPH_SETTING(datatype, specifier, container) \
-datatype container = sizeof(datatype) == sizeof(CGFloat) ? [[self objectForKey:[NSNumber numberWithInt:specifier]] floatValue] : [[self objectForKey:[NSNumber numberWithInt:specifier]] intValue]; \
-settings[settingIndex].spec = specifier; \
-settings[settingIndex].valueSize = sizeof(datatype); \
-settings[settingIndex].value = &container; \
-settingIndex++; \
+datatype container; \
+if ([self objectForKey:[NSNumber numberWithInt:specifier]]) { \
+    container = sizeof(datatype) == sizeof(CGFloat) ? [[self objectForKey:[NSNumber numberWithInt:specifier]] floatValue] : [[self objectForKey:[NSNumber numberWithInt:specifier]] intValue]; \
+    settings[settingIndex].spec = specifier; \
+    settings[settingIndex].valueSize = sizeof(datatype); \
+    settings[settingIndex].value = &container; \
+    settingIndex++; \
+} \
 
     PARAGRAPH_SETTING(uint8_t, kCTParagraphStyleSpecifierAlignment, alignment);
     PARAGRAPH_SETTING(CGFloat, kCTParagraphStyleSpecifierFirstLineHeadIndent, firstLineHeadIndent);
