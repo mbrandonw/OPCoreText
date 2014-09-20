@@ -1,17 +1,13 @@
-Pod::Spec.new do |s|
-  s.name     = 'OPCoreText'
-  s.version  = '0.1'
-  s.license  = 'MIT'
-  
-  s.summary       = 'OPCoreText'
-  s.homepage      = 'https://github.com/mbrandonw/OPCoreText'
-  s.author        = { 'Brandon Williams' => 'brandon@opetopic.com' }
-  s.source        = { :git => 'git@github.com:mbrandonw/OPCoreText.git' }
-  s.requires_arc  = true
-  
-  s.source_files = '*.{h,m}'
-  s.requires_arc = true
-  
-  s.frameworks = 'CoreText'
-  
+Pod::Spec.new do |spec|
+  spec.name         = 'OPCoreText'
+  spec.version      = '0.1.0'
+  spec.license      = { type: 'BSD' }
+  spec.homepage     = 'https://github.com/mbrandonw/OPCoreText'
+  spec.authors      = { 'Brandon Williams' => 'mbw234@gmail.com' }
+  spec.summary      = ''
+  spec.source       = { :git => 'https://github.com/mbrandonw/OPCoreText.git' }
+  spec.source_files = '*.{h,m}'
+  spec.requires_arc = true
+
+  spec.frameworks = 'CoreText'
 end
